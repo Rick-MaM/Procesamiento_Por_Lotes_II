@@ -13,7 +13,9 @@ def read_file(name):
         contents = file.read()
     return contents
 
-
+def Create_file(character, name):
+    with open("Copy_"+name, "a") as file:
+        file.write(character)
 
 def identify(Contents):
     files = []
