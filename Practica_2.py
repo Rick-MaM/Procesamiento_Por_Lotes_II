@@ -1,9 +1,12 @@
 import os
+from random import randint
 
 Directory = os.getcwd() + "\Archivos"
 os.chdir(Directory)
 Conetnido = os.listdir()
 
+def random_number(minimum, maximum):
+    return randint(minimum,maximum)
 
 def identify(Contents):
     files = []
@@ -16,6 +19,3 @@ def identify(Contents):
     return files, folder
 
 
-Arch, Carp = identify(Conetnido)
-print(Arch)
-print(Carp)
