@@ -59,12 +59,19 @@ def folder_contents(origin_directory,copy_directory):
         os.chdir(copy_directory)
         create_file(text, file[0])
         file.pop(0)
-
+ 
+    list_origin_directory, list_copy_directory = create_copy_folder(origin_directory,copy_directory,folder)
 
 def create_copy_folder(original_directory, copy_director, name):
-    new_name = "Copia_" + name
-    os.mkdir(new_name)
-    return original_directory + "/" + name, copy_director + "/" + new_name
+    list_origin_directory = []
+    list_copy_directory = []
+    for count_folder in range(len(name)):
+        new_name_folder = "Copy_" + name[count_folder]
+        os.mkdir(new_name_folder)
+        list_origin_directory.append(original_directory+"\\"+name[count_folder])
+        list_copy_directory.append(copy_director+"\\"+new_name_folder)
+    return list_origin_directory, list_copy_directory
+
 
 def main():
     origin_directory = os.getcwd() + "\Archivos"
