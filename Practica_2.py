@@ -36,10 +36,10 @@ def files_copy(file):
             letter = letter + chr(random_number(48, 57))
         else:
             letter = letter + text[count_char]
-    
     return letter
 
-#----------------CARPETAS------------------
+# ----------------CARPETAS------------------
+
 def new_folder(directory):
     list = directory.split("\\")
     list.pop()
@@ -49,34 +49,31 @@ def new_folder(directory):
     return list + "\Archivos_Copiados"
 
 
-
 def folder_contents(directory):
     os.chdir(directory)
     contests = os.listdir()
     file, folder = identify(contests)
 
     copy_folder = new_folder(directory)
-    
-    
 
     while len(file) != 0:
         os.chdir(directory)
         text = files_copy(file[0])
         os.chdir(copy_folder)
-        create_file(text,file[0])
+        create_file(text, file[0])
         file.pop(0)
-    
 
-def create_folder_directory(name):
-    new_name = "Copia_"+name
+
+def create_copy_folder(original_directory, copy_director, name):
+    new_name = "Copia_" + name
     os.mkdir(new_name)
-    return os.getcwd() + "/" + name, os.getcwd() + "/" + new_name
+    return original_directory + "/" + name, copy_director + "/" + new_name
 
 
-def folder_copy(folder):
-    for count_folder in range(len(folder)):
-        origin,copy = create_folder_directory(folder[count_folder])
-        
+# def folder_copy(folder):
+    # for count_folder in range(len(folder)):
+    #    origin,copy = create_folder_directory(folder[count_folder])
+
 
 folder_contents(Directory)
 
