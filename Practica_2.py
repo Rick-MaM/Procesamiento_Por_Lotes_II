@@ -1,7 +1,6 @@
 import os
 from random import randint
 
-Directory = os.getcwd() + "\Archivos"
 
 def random_number(minimum, maximum):
     return randint(minimum,maximum)
@@ -49,17 +48,15 @@ def new_folder(directory):
     return list + "\Archivos_Copiados"
 
 
-def folder_contents(directory):
-    os.chdir(directory)
+def folder_contents(origin_directory,copy_directory):
+    os.chdir(origin_directory)
     contests = os.listdir()
     file, folder = identify(contests)
 
-    copy_folder = new_folder(directory)
-
     while len(file) != 0:
-        os.chdir(directory)
+        os.chdir(origin_directory)
         text = files_copy(file[0])
-        os.chdir(copy_folder)
+        os.chdir(copy_directory)
         create_file(text, file[0])
         file.pop(0)
 
@@ -69,13 +66,13 @@ def create_copy_folder(original_directory, copy_director, name):
     os.mkdir(new_name)
     return original_directory + "/" + name, copy_director + "/" + new_name
 
+def main():
+    origin_directory = os.getcwd() + "\Archivos"
+    copy_folder = new_folder(origin_directory)
+    folder_contents(origin_directory, copy_folder)
 
-# def folder_copy(folder):
-    # for count_folder in range(len(folder)):
-    #    origin,copy = create_folder_directory(folder[count_folder])
 
-
-folder_contents(Directory)
+main()
 
             
 
