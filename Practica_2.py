@@ -1,5 +1,7 @@
 import os
 from random import randint
+from tkinter import *
+from tkinter import filedialog
 
 list_origin_directory = []
 list_copy_directory = []
@@ -39,8 +41,6 @@ def files_copy(file):
             letter = letter + text[count_char]
     return letter
 
-# ----------------CARPETAS------------------
-
 def new_folder(directory):
     list = directory.split("\\")
     list.pop()
@@ -48,7 +48,6 @@ def new_folder(directory):
     os.chdir(list)
     os.mkdir("Archivos_Copiados")
     return list + "\Archivos_Copiados"
-
 
 def folder_contents(origin_directory,copy_directory):
     os.chdir(origin_directory)
@@ -72,7 +71,6 @@ def create_copy_folder(original_directory, copy_director, name):
         list_origin_directory.append(original_directory+"\\"+name[count_folder])
         list_copy_directory.append(copy_director+f"\{new_name_folder}")
 
-
 def main():
     global list_origin_directory, list_copy_directory
     origin_directory = os.getcwd() + "\Archivos"
@@ -84,6 +82,14 @@ def main():
         list_origin_directory.pop(0)
         list_copy_directory.pop(0)
 
-main()
+root = Tk()
+root.title("Buscrador")
+root.geometry("450x150")
 
+def search():
+    filename = filedialog.askdirectory(title="Abrir carpeta") 
+    lblDirectory = Label(text=filename).place(x=50,y=10)
 
+btnSearch = Button(root, text="...", command=search).place(x=20,y=10)
+
+root.mainloop()
