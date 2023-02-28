@@ -88,10 +88,10 @@ root.geometry("450x150")
 
 def search():
     filename = filedialog.askdirectory(title="Abrir carpeta") 
-    lblDirectory = Label(text=filename).place(x=50,y=10)
+    lblDirectory = Label(text=filename).place(x=50,y=50)
     filename = filename.split("/")
     batch_processing("\\".join(filename))
 
-btnSearch = Button(root, text="...", command=search).place(x=20,y=10)
+btnSearch = Button(root, text="...", command=search,width=20).place(x=20,y=10)
 
 root.mainloop()
