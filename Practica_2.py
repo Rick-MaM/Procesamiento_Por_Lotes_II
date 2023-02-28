@@ -15,7 +15,7 @@ def read_file(name):
     return contents
 
 def create_file(character, name):
-    with open("Copy_"+name, "a") as file:
+    with open(name, "a") as file:
         file.write(character)
 
 def identify(Contents):
@@ -67,10 +67,9 @@ def folder_contents(origin_directory,copy_directory):
 def create_copy_folder(original_directory, copy_director, name):
     global list_origin_directory, list_copy_directory
     for count_folder in range(len(name)):
-        new_name_folder = "Copy_" + name[count_folder]
-        os.mkdir(new_name_folder)
+        os.mkdir(name[count_folder])
         list_origin_directory.append(original_directory+"\\"+name[count_folder])
-        list_copy_directory.append(copy_director+f"\{new_name_folder}")
+        list_copy_directory.append(copy_director+f"\{name[count_folder]}")
 
 
 def batch_processing(origin_directory):
