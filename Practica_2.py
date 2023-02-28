@@ -61,7 +61,8 @@ def folder_contents(origin_directory,copy_directory):
         os.chdir(copy_directory)
         create_file(text, file[0])
         file.pop(0)
-    create_copy_folder(origin_directory,copy_directory,folder)
+    if len(folder) != 0:
+        create_copy_folder(origin_directory,copy_directory,folder)
 
 def create_copy_folder(original_directory, copy_director, name):
     global list_origin_directory, list_copy_directory
@@ -78,13 +79,11 @@ def main():
     copy_folder = new_folder(origin_directory)
     folder_contents(origin_directory, copy_folder)
 
-    print(list_origin_directory)
-    print(list_copy_directory)
+    while len(list_copy_directory) != 0:
+        folder_contents(list_origin_directory[0],list_copy_directory[0])
+        list_origin_directory.pop(0)
+        list_copy_directory.pop(0)
 
-
-direc = "D:\\Archivos\\Git_Hub\\Seminario_Sistemas_Operativos\\Practica_2_Procesamiento_Lotes_II\\Archivos\\Carpeta"
-os.chdir(direc)
-print(os.getcwd())
-            
+main()
 
 
