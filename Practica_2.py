@@ -41,13 +41,14 @@ def files_copy(file):
             letter = letter + text[count_char]
     return letter
 
-def new_folder(directory):
-    list = directory.split("\\")
-    list.pop()
-    list = "\\".join(list)
-    os.chdir(list)
-    os.mkdir("Archivos_Copiados")
-    return list + "\Archivos_Copiados"
+def new_folder_origin(directory):
+    before = directory.split("\\")
+    new_folder = "Copy_" + before[len(before)-1]
+    before.pop()
+    before = "\\".join(before)
+    os.chdir(before)
+    os.mkdir(new_folder)
+    return before +"\\"+ new_folder
 
 def folder_contents(origin_directory,copy_directory):
     os.chdir(origin_directory)
@@ -74,7 +75,8 @@ def create_copy_folder(original_directory, copy_director, name):
 
 def batch_processing(origin_directory):
     global list_origin_directory, list_copy_directory
-    copy_folder = new_folder(origin_directory)
+    copy_folder = new_folder_origin(origin_directory)
+    print(copy_folder)
     folder_contents(origin_directory, copy_folder)
 
     while len(list_copy_directory) != 0:
@@ -88,7 +90,7 @@ root.geometry("450x150")
 
 def search():
     filename = filedialog.askdirectory(title="Abrir carpeta") 
-    lblDirectory = Label(text=filename).place(x=50,y=50)
+    lblDirectory = Label(text=filename).place(x=20,y=50)
     filename = filename.split("/")
     batch_processing("\\".join(filename))
 
