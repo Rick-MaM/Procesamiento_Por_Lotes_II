@@ -71,9 +71,9 @@ def create_copy_folder(original_directory, copy_director, name):
         list_origin_directory.append(original_directory+"\\"+name[count_folder])
         list_copy_directory.append(copy_director+f"\{new_name_folder}")
 
-def batch_processing():
+
+def batch_processing(origin_directory):
     global list_origin_directory, list_copy_directory
-    origin_directory = os.getcwd() + "\Archivos"
     copy_folder = new_folder(origin_directory)
     folder_contents(origin_directory, copy_folder)
 
@@ -89,6 +89,8 @@ root.geometry("450x150")
 def search():
     filename = filedialog.askdirectory(title="Abrir carpeta") 
     lblDirectory = Label(text=filename).place(x=50,y=10)
+    filename = filename.split("/")
+    batch_processing("\\".join(filename))
 
 btnSearch = Button(root, text="...", command=search).place(x=20,y=10)
 
