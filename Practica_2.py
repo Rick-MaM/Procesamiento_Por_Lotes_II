@@ -71,7 +71,7 @@ def create_copy_folder(original_directory, copy_director, name):
         list_origin_directory.append(original_directory+"\\"+name[count_folder])
         list_copy_directory.append(copy_director+f"\{new_name_folder}")
 
-def main():
+def batch_processing():
     global list_origin_directory, list_copy_directory
     origin_directory = os.getcwd() + "\Archivos"
     copy_folder = new_folder(origin_directory)
@@ -83,7 +83,7 @@ def main():
         list_copy_directory.pop(0)
 
 root = Tk()
-root.title("Buscrador")
+root.title("Buscador")
 root.geometry("450x150")
 
 def search():
